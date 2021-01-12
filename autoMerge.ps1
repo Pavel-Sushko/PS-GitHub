@@ -72,7 +72,7 @@
 
     git push --all --progress
 
-    gh pr create -a $a -l $l -f -l $l -B 'master'
+    gh pr create -a $a -l $l -f -l $l
 
     if ($m)
     {
