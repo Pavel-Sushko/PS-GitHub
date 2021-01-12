@@ -24,6 +24,9 @@
     do
     {
         [string]$branch = "$username-patch-$i"
+
+        echo $branch
+
         [string]$checkStr = $(git $branch 2>&1)
 
         if ($checkStr.Contains("fatal: A branch named '$branch' already exists."))
