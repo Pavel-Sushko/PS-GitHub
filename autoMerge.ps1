@@ -57,7 +57,7 @@
         {
             $check = $true
 
-            $branch = "$username-patch-$i"
+            [string]$branch = "$username-patch-$i"
 
             git branch $branch
         }
@@ -72,7 +72,7 @@
 
     git push --all --progress
 
-    gh pr create -a $a -l $l -f -l $l -B master
+    gh pr create -a $a -l $l -f -l $l -B 'master'
 
     if ($m)
     {
