@@ -5,32 +5,27 @@
 
     [Parameter (Mandatory=$false)] [string]$asignee
     [Parameter (Mandatory=$false)] [string]$reviewer
-    [Parameter (Mandatory=$false)] [string]$merge
+    [Parameter (Mandatory=$false)] [bool]$m
 
-    if(-not($PSBoundParameters.ContainsKey('assignee')) -and $a)
+    if ($PSBoundParameters.ContainsKey('asignee'))
+    {    }
+    else
     {
         $asignee = $username
     }
 
-    if(-not($PSBoundParameters.ContainsKey('reviewer')) -and $reviewer)
+    if($PSBoundParameters.ContainsKey('reviewer'))
+    {    }
+    else
     {
         $reviewer = $username
     }
 
-    if(-not($PSBoundParameters.ContainsKey('merge')) -and $merge)
-    {
-        $merge = $false
-    }
-    else
-    {
-        $merge = $true
-    }
-
     do
     {
-        [string]$checkStr = $(git "$asignee-patch-$i" 2>&1)
+        [string]$checkStr = $(git "$username-patch-$i" 2>&1)
 
-        [string]$branch = "$asignee-patch-$i"
+        [string]$branch = "$username-patch-$i"
 
         if ($checkStr -eq "fatal: A branch named '$branch' already exists.")
         {
@@ -40,7 +35,7 @@
         {
             $check = $true
 
-            git branch $branch
+            git branch "$branch"
         }
 
         $i++
@@ -55,10 +50,14 @@
 
     gh pr create -f -a $asignee -r $reviewer
 
-    if ($m)
+    if ($PSBoundParameters.ContainsKey('m'))
     {
+        echo 'Good'
+
         gh pr merge $branch
     }
+
+    # cls
 
     gh pr diff $branch
 }
