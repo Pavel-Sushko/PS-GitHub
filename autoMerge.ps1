@@ -58,6 +58,8 @@
             $check = $true
 
             $branch = "$username-patch-$i"
+
+            git branch $branch
         }
 
         $i++
