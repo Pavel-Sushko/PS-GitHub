@@ -10,35 +10,25 @@
 
     if(-not($PSBoundParameters.ContainsKey('assignee')) -and $a)
     {
-        echo 'parameter a'
-
         $a = $username
     }
 
     if(-not($PSBoundParameters.ContainsKey('label')) -and $l)
     {
-        echo 'parameter l'
-
         [string]$l = [Microsoft.VisualBasic.Interaction]::InputBox("Enter the label you would like to assign to this Pull Request", "Label")
     }
 
     if(-not($PSBoundParameters.ContainsKey('reviewer')) -and $r)
     {
-        echo 'parameter r'
-
         $r = $username
     }
 
     if(-not($PSBoundParameters.ContainsKey('merge')) -and $m)
     {
-        echo 'parameter m'
-
         $m = $false
     }
     else
     {
-        echo 'parameter m'
-
         $m = $true
     }
 
