@@ -56,7 +56,7 @@
 
     git push --all --progress
 
-    gh pr create -a $a -f -l $l
+    gh pr create -a $a -f
 
     if ($m)
     {
