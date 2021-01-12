@@ -53,7 +53,7 @@
 
     git push --all --progress
 
-    gh pr create -f -a $a -r $reviewer
+    gh pr create -f -a $asignee -r $reviewer
 
     if ($m)
     {
