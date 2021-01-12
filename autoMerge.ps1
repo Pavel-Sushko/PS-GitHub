@@ -28,7 +28,7 @@
 
     do
     {
-        [string]$checkStr = $(git "$username-patch-$i" 2>&1)
+        [string]$checkStr = $(git "$asignee-patch-$i" 2>&1)
 
         [string]$branch = "$asignee-patch-$i"
 
