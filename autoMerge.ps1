@@ -29,6 +29,8 @@
 
         if ($checkStr -eq "fatal: A branch named '$branch' already exists.")
         {
+            echo "Error was thrown $i"
+
             $check = $false
         }
         else
