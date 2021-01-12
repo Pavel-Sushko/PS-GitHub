@@ -4,18 +4,12 @@
     [string]$username = "Pavel-Sushko"
 
     [Parameter (Mandatory=$false)] [string]$a
-    [Parameter (Mandatory=$false)] [string]$l
     [Parameter (Mandatory=$false)] [string]$r
     [Parameter (Mandatory=$false)] [string]$m
 
     if(-not($PSBoundParameters.ContainsKey('assignee')) -and $a)
     {
         $a = $username
-    }
-
-    if(-not($PSBoundParameters.ContainsKey('label')) -and $l)
-    {
-        [string]$l = [Microsoft.VisualBasic.Interaction]::InputBox("Enter the label you would like to assign to this Pull Request", "Label")
     }
 
     if(-not($PSBoundParameters.ContainsKey('reviewer')) -and $r)
@@ -62,7 +56,7 @@
 
     git push --all --progress
 
-    gh pr create -a $a -l $l -f -l $l
+    gh pr create -a $a -f -l $l
 
     if ($m)
     {
