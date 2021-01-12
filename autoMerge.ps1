@@ -26,7 +26,7 @@
         [string]$branch = "$username-patch-$i"
         [string]$checkStr = $(git $branch 2>&1)
 
-        if ($checkStr -eq "fatal: A branch named '$branch' already exists.")
+        if ($checkStr.Contains("fatal: A branch named '$branch' already exists."))
         {
             echo "Error was thrown $i"
 
