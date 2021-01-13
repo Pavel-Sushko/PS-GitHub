@@ -24,15 +24,10 @@
     do
     {
         [string]$branch = "$username-patch-$i"
+        [string]$checkStr = $(git branch $branch 2>&1)
 
-        echo $branch
-
-        [string]$checkStr = $(git $branch 2>&1)
-
-        if ($checkStr.Contains("fatal: A branch named '$branch' already exists."))
+        if ($checkStr -eq "fatal: A branch named '$branch' already exists.")
         {
-            echo "Error was thrown $i"
-
             $check = $false
         }
         else
@@ -56,12 +51,10 @@
 
     if ($PSBoundParameters.ContainsKey('m'))
     {
-        echo 'Good'
-
         gh pr merge $branch
     }
 
-    # cls
+    cls
 
     gh pr diff $branch
 }
