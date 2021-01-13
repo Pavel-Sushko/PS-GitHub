@@ -49,12 +49,10 @@
 
     gh pr create -f -a $asignee -r $reviewer
 
-    if ($PSBoundParameters.ContainsKey('m'))
+    if ($m -imatch 'y')
     {
         gh pr merge $branch
     }
-
-    cls
 
     gh pr diff $branch
 }
